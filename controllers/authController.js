@@ -9,7 +9,7 @@ const login = async (req, res) => {
         return (res.status(404).json({ mssg: 'All fields are required' }))
 
     const user = await userModel.findOne({ email }).exec()
-    if (!user || !user.active) 
+    if (!user) 
         return (res.status(401).json({ error: 'Unauthorized' }))
 
     const match = await bcrypt.compare(password, user.password)
@@ -18,16 +18,16 @@ const login = async (req, res) => {
 
     const access_token = jwt.sign({
         "userInfo": { 
-            "userName": user.userName, 
+            "name": user.name, 
             "email": user.email, 
-            "role": user.role 
+            "userRole": user.userRole 
         }
     }, 
     process.env.ACCESS_TOKEN_KEY, 
-    { expiresIn: '30mins' })
+    { expiresIn: '15mins' })
 
     const refresh_token = jwt.sign({
-        "userName": user.userName
+        "name": user.name
     },
     process.env.REFRESH_TOKEN_KEY,
     { expiresIn: '7d' })
@@ -63,9 +63,9 @@ const refresh = (req, res) => {
 
             const access_token = jwt.sign({
                 "userInfo": {
-                    "userName": user.userName, 
+                    "name": user.name, 
                     "email": user.email, 
-                    "role": user.role 
+                    "userRole": user.userRole 
                 }
             },
             process.env.ACCESS_TOKEN_KEY,

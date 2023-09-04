@@ -1,20 +1,42 @@
 const mongoose = require('mongoose');
 
-const courseSchema = new mongoose.Schema ({
-    courseName: {
-        type: String,
-        require: true
-    },
-    courseDescription: {
-        type: String,
-        required: true
-    },
-    courseID: {
-        type: Number,
-        required: true
-    }
-}, { timestamps: true })
+const submissionLinkSchema = new mongoose.Schema({
+    title: {
+        type: String
+    },         // Title for the submission link
+    description: {
+        type: String
+    },   // Description of the submission link (optional)
+    pdfFiles: {
+        type: [String]
+    }    // Store uploaded assignment files (PDFs)
+  });
 
-const courseModel = mongoose.model("Course", courseSchema);
+const courseSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  courseId: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  teacher: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',  // Reference to the User model for the teacher
+  },
+  students: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',  // Reference to the User model for students
+  }],
+  submissionLinks: [submissionLinkSchema]
+});
 
-module.exports = courseModel;
+const courseModel = mongoose.model('Course', courseSchema);
+
+module.exports = { courseModel };

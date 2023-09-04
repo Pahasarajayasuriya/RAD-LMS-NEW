@@ -1,75 +1,51 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    userName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    role: {
-        type: String,
-        default: "Student"
-    },
-    active: {
-        type: Boolean,
-        default: true
-    }
-},{ timestamps: true })
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  userId: {
+    type: Number,
+    unique: true,
+    required: true,
+  },
+  userRole: {
+    type: String,
+    enum: ['admin', 'lecturer', 'student'],
+    required: true
+  },
+});
 
-const userModel = mongoose.model("User", userSchema)
+// // Auto-increment UserId
+// userSchema.pre('save', async function (next) {
+//     if (!this.userId) {
+//       try {
+//         const counter = await UserCounter.findOneAndUpdate(
+//           { model: 'userModel', field: 'userId' },
+//           { $inc: { count: 1 } },
+//           { upsert: true, new: true }
+//         );
+//         this.userId = counter.count;
+//         next();
+//       } catch (error) {
+//         next(error);
+//       }
+//     } else {
+//       next();
+//     }
+//   });
+  
+
+const userModel = mongoose.model('User', userSchema);
 
 module.exports = { userModel };
-
-
-
-
-
-// const studentSchema = new schema({
-//     userName: {
-//         type: String,
-//         required: true
-//     },
-//     email: {
-//         type: String,
-//         required: true
-//     },
-//     password: {
-//         type: String,
-//         required: true
-//     },
-//     role: {
-//         type: String,
-//         default: "Student"
-//     }
-// }, {timestamps: true})
-
-// const studentModel = mongoose.model("Student", studentSchema)
-
-// const teacherSchema = new schema({
-//     userName: {
-//         type: String,
-//         required: true
-//     },
-//     email: {
-//         type: String,
-//         required: true
-//     },
-//     password: {
-//         type: String,
-//         required: true
-//     },
-//     role: {
-//         type: String,
-//         default: "Teacher"
-//     }
-// }, { timestamps: true })
-
-// const teacherModel = mongoose.model("Teacher", teacherSchema)
-
