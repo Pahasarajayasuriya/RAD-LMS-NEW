@@ -4,7 +4,7 @@ const {
     createSubmissionLink
 } = require('../controllers/lecturerController')
 
-router.route('/upload-courseMaterials/:courseId').post(uploadCourseMaterial)
-router.route('/create-submissionLinks:courseId').post(createSubmissionLink)
+router.route('/course/:courseId/upload-courseMaterials').post(uploadCourseMaterial)
+router.route('/course/:courseId/create-submissionLinks').post(createSubmissionLink)
 
 module.exports = router

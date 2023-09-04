@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Grid = require('gridfs-stream')
+const { courseModel } = require('../models/courseModel')
 const conn = mongoose.connection
 Grid.mongo = mongoose.mongo
 
@@ -12,7 +13,7 @@ const uploadAssignment = async (req, res) => {
     const file = req.file
 
     try {
-        const course = await Course.findById(courseId)
+        const course = await courseModel.findById(courseId)
         if (!course) {
             return res.status(404).json({ message: 'Course not found' })
         }
@@ -23,7 +24,7 @@ const uploadAssignment = async (req, res) => {
         }
 
         const writeStream = gfs.createWriteStream({
-            filename: file.originalname,
+            filename: file,
             metadata: {
                 courseId: course._id,  // Associate the file with the course
                 linkId: submissionLink._id, // Associate the file with the submission link
@@ -56,7 +57,7 @@ const deleteAssignment = async (req, res) => {
     const studentId = req.user._id
 
     try {
-        const course = await Course.findById(courseId)
+        const course = await courseModel.findById(courseId)
         if (!course) {
             return res.status(404).json({ message: 'Course not found' })
         }

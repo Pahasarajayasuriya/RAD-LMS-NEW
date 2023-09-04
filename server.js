@@ -9,6 +9,7 @@ const app = express();
 const admin = require('./routes/adminRoutes')
 const student = require('./routes/studentRoutes')
 const lecturer = require('./routes/lecturerRoutes')
+const authentication = require('./routes/authRoutes')
 
 const PORT = process.env.PORT || 5000;
 dbConnect;
@@ -20,6 +21,7 @@ app.use(cors());
 app.use('/admin', admin)
 app.use('/student', student)
 app.use('/lecturer', lecturer)
+app.use('/auth', authentication)
 
 app.listen(PORT, () => {
     console.log(`Listening to port ${ PORT }`);

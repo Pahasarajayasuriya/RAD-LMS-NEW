@@ -2,9 +2,22 @@ const mongoose = require('mongoose')
 const Grid = require('gridfs-stream')
 const { courseModel } = require('../models/courseModel')
 const conn = mongoose.connection
-Grid.mongo = mongoose.mongo
+const fs = require('fs');
 
-const gfs = new Grid(conn)
+// Grid.mongo = mongoose.mongo
+
+// const gfs = Grid(conn.db)
+let gfs;
+
+if (mongoose.connection.readyState === 1) {
+    gfs = Grid(conn.db, mongoose.mongo);
+} 
+else {
+    conn.once("open", () => {
+        gfs = Grid(conn.db, mongoose.mongo);
+    });
+}
+
 
 const uploadCourseMaterial = async (req, res) => {
     const courseId = req.params.courseId
@@ -17,7 +30,7 @@ const uploadCourseMaterial = async (req, res) => {
         }
 
         const writeStream = gfs.createReadStream({
-            filename: file.originalname,
+            filename: file,
             metadata: {
                 courseId: course._id,
                 fileType: 'material'
