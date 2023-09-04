@@ -1,0 +1,72 @@
+/* LecturerDashboard.css */
+
+/* Center the content vertically and horizontally */
+.lecturerdashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Style for the card containing the upload section */
+  .lec_dash_upload-card {
+    width: 400px; /* Adjust the width as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Style for the uploaded files section */
+  .lec_dash_uploaded-files {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  /* Style for the uploaded file list */
+  .lec_dash_uploaded-files ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lec_dash_uploaded-files li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Style for the Delete button */
+  .lec_dash_uploaded-files button {
+    background-color: #ff6b6b; /* Customize the button color */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  /* Style for the Success message */
+  .lec_dash_upload-card p {
+    color: green; /* Customize the success message color */
+    margin-top: 10px;
+  }
+  
+  /* Style for the "Selected File" message */
+  .lec_dash_upload-card p.invalid-file {
+    color: red; /* Customize the invalid file message color */
+  }
+  
+  /* Style for the Upload button */
+  .lec_dash_upload-card button {
+    margin-top: 10px;
+    background-color: #007bff; /* Customize the button color */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  

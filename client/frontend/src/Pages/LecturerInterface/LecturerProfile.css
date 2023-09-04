@@ -1,0 +1,43 @@
+.lec_pro_studentprofile {
+    padding: 20px;
+    text-align: center;
+}
+  
+.lec_pro_profile-title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+  
+.lec_pro_profile-card,
+.lec_pro_moduleprofile-card {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #d2d6e4;
+}
+  
+.lec_pro_profile-card-header,
+.lec_pro_moduleprofile-card-header {
+    background-color: #3b4160;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+}
+  
+.lec_pro_profile-details-list,
+.lec_pro_moduleprofile-details-list {
+    list-style: none;
+    padding-left: 50px;
+    text-align: left;
+    /* background-color: #3b4160; */
+}
+  
+.lec_pro_profile-details-list li,
+.lec_pro_moduleprofile-details-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+  
+.lec_pro_profile-details-list strong {
+    font-weight: bold;
+}

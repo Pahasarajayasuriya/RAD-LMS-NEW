@@ -1,0 +1,55 @@
+.stu_dash_studentdashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.stu_dash_dashboard-card01,
+.stu_dash_dashboard-card02,
+.stu_dash_dashboard-card03,
+.stu_dash_dashboard-card04 {
+  width: calc(50% - 20px);
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stu_dash_dashboard-card-title01,
+.stu_dash_dashboard-card-title02,
+.stu_dash_dashboard-card-title03,
+.stu_dash_dashboard-card-title04 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.stu_dash_dashboard-card-text01,
+.stu_dash_dashboard-card-text02,
+.stu_dash_dashboard-card-text03,
+.stu_dash_dashboard-card-text04 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.stu_dash_dashboard-button01,
+.stu_dash_dashboard-button02,
+.stu_dash_dashboard-button03,
+.stu_dash_dashboard-button04 {
+  background-color: #3b4160;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stu_dash_dashboard-button01:hover,
+.stu_dash_dashboard-button02:hover,
+.stu_dash_dashboard-button03:hover,
+.stu_dash_dashboard-button04:hover {
+  background-color: #333;
+}
