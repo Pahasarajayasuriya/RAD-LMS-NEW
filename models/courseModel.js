@@ -7,10 +7,16 @@ const submissionLinkSchema = new mongoose.Schema({
     description: {
         type: String
     },   // Description of the submission link (optional)
-    pdfFiles: {
+    files: {
         type: [String]
     }    // Store uploaded assignment files (PDFs)
   });
+
+//   const uploadCourseMaterial = new mongoose.Schema({
+//     filename: String,     // Original filename of the PDF file
+//     contentType: String,  // MIME type of the PDF file (e.g., application/pdf)
+//     data: Buffer,    // Store uploaded assignment files (PDFs)
+//   });
 
 const courseSchema = new mongoose.Schema({
   title: {
@@ -28,12 +34,13 @@ const courseSchema = new mongoose.Schema({
   },
   teacher: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',  // Reference to the User model for the teacher
+    ref: 'Users',  // Reference to the User model for the teacher
   },
   students: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',  // Reference to the User model for students
+    ref: 'Users',  // Reference to the User model for students
   }],
+  // courseMaterials: [uploadCourseMaterial],
   submissionLinks: [submissionLinkSchema]
 });
 

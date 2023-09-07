@@ -1,3 +1,5 @@
+const { userModel } = require('../models/userModel')
+
 const adminAuthentication = (req, res, next) => {
     req.userModel.userRole != "admin"
         .then(res.status(401).json({ err: "Access Denied" }))
